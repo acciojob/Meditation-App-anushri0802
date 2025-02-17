@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('audio');
     const playButton = document.querySelector('.play');
     const timeDisplay = document.querySelector('.time-display');
-    const timeButtons = document.querySelectorAll('#time-select button');
+    const timeButtons = document.querySelectorAll('.time-select button');
     const soundButtons = document.querySelectorAll('.sound-picker button');
     let duration = 600; // default to 10 minutes
     let isPlaying = false;
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetTime() {
         clearInterval(timer);
-        timeDisplay.textContent = `${Math.floor(duration / 60)}:${('0' + duration % 60).slice(-2)}`;
+        timeDisplay.textContent = `${Math.floor(duration / 60)}:${duration % 60}`;
         if (isPlaying) {
             timer = setInterval(updateTime, 1000);
         }
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTime() {
         duration--;
-        timeDisplay.textContent = `${Math.floor(duration / 60)}:${('0' + duration % 60).slice(-2)}`;
+        timeDisplay.textContent = `${Math.floor(duration / 60)}:${duration % 60}`;
         if (duration <= 0) {
             clearInterval(timer);
             video.pause();
