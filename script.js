@@ -1,4 +1,3 @@
-//your JS code here. If required.
 document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('video');
     const playButton = document.querySelector('.play');
