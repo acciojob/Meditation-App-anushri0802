@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('video');
+    const audio = document.getElementById('audio');
     const playButton = document.querySelector('.play');
     const timeDisplay = document.querySelector('.time-display');
     const timeButtons = document.querySelectorAll('#time-select button');
@@ -16,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function togglePlayPause() {
         if (isPlaying) {
             video.pause();
+            audio.pause();
             clearInterval(timer);
             playButton.textContent = 'Play';
         } else {
             video.play();
+            audio.play();
             timer = setInterval(updateTime, 1000);
             playButton.textContent = 'Pause';
         }
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (duration <= 0) {
             clearInterval(timer);
             video.pause();
+            audio.pause();
             isPlaying = false;
             playButton.textContent = 'Play';
         }
@@ -62,13 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id === 'beach') {
             currentSound = 'beach';
             video.src = 'videos/beach.mp4';
+            audio.src = 'sounds/beach.mp3';
         } else if (id === 'rain') {
             currentSound = 'rain';
             video.src = 'videos/rain.mp4';
+            audio.src = 'sounds/rain.mp3';
         }
         resetTime();
         if (isPlaying) {
             video.play();
+            audio.play();
         }
     }
 });
